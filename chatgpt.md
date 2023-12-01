@@ -1,21 +1,25 @@
-curl -sSL https://get.docker.com | sh
+#curl -sSL https://get.docker.com | sh
 报错
+
+````
 [root@ip-172-31-29-153 ec2-user]# curl -sSL https://get.docker.com | sh
 # Executing docker install script, commit: e5543d473431b782227f8908005543bb4389b8de
 
 ERROR: Unsupported distribution 'amzn'
+````
 
-用中文
+#用中文
 看起
 
 為了解決這個問題，您可以嘗試以下替代方法在Amazon Linux上安裝Docker：
 
 bash
 Copy code
-
+````
 sudo amazon-linux-extras install docker
 sudo service docker start
 sudo usermod -a -G docker ec2-user
+````
 
 這種方法使用了amazon-linux-extras工具來在Amazon Linux上安裝Docker。安裝完畢後，啟動Docker服務，並將ec2-user添加到docker組中，以便您可以無需sudo運行Docker命令。
 
@@ -25,6 +29,7 @@ sudo usermod -a -G docker ec2-user
 
 报错+1
 
+````
 [root@ip-172-31-29-153 ec2-user]# sudo amazon-linux-extras install docker
 sudo service docker start
 sudo usermod -a -G docker ec2-user
@@ -32,6 +37,7 @@ sudo: amazon-linux-extras: command not found
 Redirecting to /bin/systemctl start docker.service
 Failed to start docker.service: Unit docker.service not found.
 usermod: group 'docker' does not exist
+````
 
 看起來 amazon-linux-extras 命令未找到，而 Docker 服务也未能正常启动。这可能是由于 Amazon Linux 2 的特定配置或更新引起的问题。
 

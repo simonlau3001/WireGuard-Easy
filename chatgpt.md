@@ -87,9 +87,9 @@ usermod: group 'docker' does not exist
 bash
 Copy code
 ````
-sudo yum install docker -y
-sudo service docker start
-sudo usermod -aG docker ec2-user
+$ sudo yum install docker -y
+$ sudo service docker start
+$ sudo usermod -aG docker ec2-user
 ````
 这将通过 yum 安装 Docker，启动 Docker 服务，并将 ec2-user 添加到 docker 组。最后，您可能需要退出并重新登录以应用组更改。
 
